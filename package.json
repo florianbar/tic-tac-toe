@@ -1,0 +1,21 @@
+{
+  "name": "hetzner-test01.git",
+  "version": "0.0.2",
+  "description": "",
+  "license": "BSD-3-Clause",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/florianbar/hetzner-test01.git"
+  },
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-livereload": "^3.8.1",
+    "mustache": "^2.3.0"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-react": "^3.1.0",
+    "gulp-sass": "^3.1.0"
+  }
+}

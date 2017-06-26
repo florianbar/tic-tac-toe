@@ -1,3 +1,26 @@
 @import "_variables.scss";
 @import "_mobile.scss";
 @import "_layout.scss";
+
+.grid {
+	margin: 40px auto;
+	
+	.grid__cell {
+		width: 150px;
+		height: 150px;
+		border: 2px solid #999;
+		cursor: pointer;
+
+		&:hover {
+			background-color: #eee;
+		}
+
+		&.grid__cell--x {
+			background-color: blue;
+		}
+
+		&.grid__cell--o {
+			background-color: red;
+		}
+	}
+}

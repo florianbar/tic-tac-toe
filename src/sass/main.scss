@@ -2,6 +2,9 @@
 @import "_mobile.scss";
 @import "_layout.scss";
 
+$blue: #337ab7;
+$red: #cc5b32;
+
 .grid {
 	margin: 40px auto;
 	
@@ -16,11 +19,11 @@
 		}
 
 		&.grid__cell--x {
-			background-color: blue;
+			background-color: $blue;
 		}
 
 		&.grid__cell--o {
-			background-color: red;
+			background-color: $red;
 		}
 	}
 }

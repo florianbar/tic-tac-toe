@@ -1,4 +1,4 @@
-# hetzner-test01
+# tic-tac-toe
 
 Using :
  - <a href="https://www.npmjs.com/package/gulp">Gulp</a></i> as Task Runner<br>

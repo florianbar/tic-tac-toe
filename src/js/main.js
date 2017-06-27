@@ -29,33 +29,33 @@ class TicTacToe {
         if (this.playerMoves == 1) 
         {
             //Randomly select a cell
-            var cell = this.getRandomCell();
+            let cell = this.getRandomCell();
             this.updateGrid(2, cell);
         }
         else if (this.playerMoves == 2) 
         {
-            var usersWinningCombo = this.getWinningComboForPlayer(1);
+            let usersWinningCombo = this.getWinningComboForPlayer(1);
 
             //Defend if the user has a chance to win
             if (usersWinningCombo > -1) 
             {
-                var cell = this.getDefendingCell( usersWinningCombo );
+                let cell = this.getDefendingCell( usersWinningCombo );
                 this.updateGrid(2, cell);
             } 
             //Otherwise compete
             else 
             {
-                var computerWinningCombo = this.getWinningComboForPlayer(2);
+                let computerWinningCombo = this.getWinningComboForPlayer(2);
 
                 if (computerWinningCombo > -1) 
                 {
-                    var cell = this.getDefendingCell( computerWinningCombo );
+                    let cell = this.getDefendingCell( computerWinningCombo );
                     this.updateGrid(2, cell); 
                 }
                 else
                 {
                     //Random
-                    var cell = this.getRandomCell();
+                    let cell = this.getRandomCell();
                     this.updateGrid(2, cell);
                 }
             }
@@ -64,17 +64,17 @@ class TicTacToe {
         {
             //Randomize the strategy for the next move
             // 0 => defend, 1 => compete, 2 => random
-            var strategy = Math.floor(Math.random() * 3);
+            let strategy = Math.floor(Math.random() * 3);
 
             switch (strategy) 
             {
                 //Defend
                 case 0:
-                    var usersWinningCombo = this.getWinningComboForPlayer(1);
+                    let usersWinningCombo = this.getWinningComboForPlayer(1);
 
                     if (usersWinningCombo > -1) 
                     {
-                        var cell = this.getDefendingCell( usersWinningCombo );
+                        let cell = this.getDefendingCell( usersWinningCombo );
                         this.updateGrid(2, cell);
                     } 
                     else 
@@ -87,11 +87,11 @@ class TicTacToe {
 
                 //Compete
                 case 1:
-                    var computerWinningCombo = this.getWinningComboForPlayer(2);
+                    let computerWinningCombo = this.getWinningComboForPlayer(2);
 
                     if (computerWinningCombo > -1) 
                     {
-                        var cell = this.getDefendingCell( computerWinningCombo );
+                        let cell = this.getDefendingCell( computerWinningCombo );
                         this.updateGrid(2, cell);
                     }
                     else 
@@ -104,16 +104,16 @@ class TicTacToe {
 
                 //Random
                 default:
-                    var cell = this.getRandomCell();
+                    let cell = this.getRandomCell();
                     this.updateGrid(2, cell);
             }
         }
     }
 
     getEmptyCells() {
-        var emptyCells = [];
+        let emptyCells = [];
 
-        for (var i = 0; i < this.grid.length; i++) {
+        for (let i = 0; i < this.grid.length; i++) {
             if (this.grid[i] == 0) {
                 emptyCells.push(i);
             }
@@ -123,11 +123,11 @@ class TicTacToe {
     }
 
     getRandomCell() {
-        var emptyCells = this.getEmptyCells();
+        let emptyCells = this.getEmptyCells();
 
         //Check if there are any empty cells
         if (emptyCells.length > 0) {
-            var cellIndex;
+            let cellIndex;
 
             //Choose a random cell that's empty
             while (this.grid[cellIndex] != 0) {
@@ -139,10 +139,10 @@ class TicTacToe {
     }
 
     getDefendingCell(combo) {
-        var winningCombo = this.winningCombos[combo];
+        let winningCombo = this.winningCombos[combo];
 
         //Find the empty cell in the winning combo
-        for (var i = 0; i < winningCombo.length; i++) {
+        for (let i = 0; i < winningCombo.length; i++) {
             if (this.grid[ winningCombo[i] ] == 0) {
                 return winningCombo[i];
             }
@@ -152,18 +152,18 @@ class TicTacToe {
     }
 
     getWinningComboForPlayer(player) {
-        var playerCells = this.getPlayerCells(player);
+        let playerCells = this.getPlayerCells(player);
 
         //Loop through each winning combo...
-        for (var i = 0; i < this.winningCombos.length; i++) {
+        for (let i = 0; i < this.winningCombos.length; i++) {
 
-            var correct = 0;
+            let correct = 0;
 
             //...and look at each number in that winning combo
-            for (var ii = 0; ii < this.winningCombos[i].length; ii++) {
+            for (let ii = 0; ii < this.winningCombos[i].length; ii++) {
 
                 //...and compare that with the player's numbers
-                for (var iii = 0; iii < playerCells.length; iii++) {
+                for (let iii = 0; iii < playerCells.length; iii++) {
 
                     if (this.winningCombos[i][ii] == playerCells[iii]) {
                         correct++;
@@ -171,7 +171,7 @@ class TicTacToe {
 
                     //If 2 are correct, that means the player has a chance to win
                     if (correct == 2) {
-                        var otherPlayerCells = this.getOtherPlayerCellsFromCombo(player, this.winningCombos[i]);
+                        let otherPlayerCells = this.getOtherPlayerCellsFromCombo(player, this.winningCombos[i]);
 
                         if (otherPlayerCells.length == 0) {
                             return i;
@@ -186,10 +186,10 @@ class TicTacToe {
     }
 
     getOtherPlayerCellsFromCombo(player,combo) {
-        var cells = [];
+        let cells = [];
 
-        for (var i = 0; i < combo.length; i++) {
-            var cell = this.grid[combo[i]];
+        for (let i = 0; i < combo.length; i++) {
+            let cell = this.grid[combo[i]];
 
             if (cell != 0 && cell != player) {
                 cells.push(combo[i]);
@@ -200,10 +200,10 @@ class TicTacToe {
     }
 
     getPlayerCells(player) {
-        var cells = [];
+        let cells = [];
 
         //Check which cells belong to the player
-        for (var i = 0; i < this.grid.length; i++) {
+        for (let i = 0; i < this.grid.length; i++) {
             if (this.grid[i] == player) {
                 cells.push(i);
             }
@@ -223,7 +223,7 @@ class TicTacToe {
 
     updateGrid(player, cell) {
         this.grid[cell] = player;
-        var className = (player == 1)? 'grid__cell--x' : 'grid__cell--o';
+        let className = (player == 1)? 'grid__cell--x' : 'grid__cell--o';
         $('.grid__cell[data-cell="' + cell + '"]').addClass(className);
     }
 
